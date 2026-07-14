@@ -4,7 +4,7 @@ const mem = std.mem;
 
 pub fn main() void {
     const bytes = "hello";
-    print("{}\n", .{ @TypeOf(bytes) });
+    print("{}\n", .{@TypeOf(bytes)});
     print("{d}\n", .{bytes.len}); // 5
     print("{c}\n", .{bytes[1]}); // 'e'
     print("{d}\n", .{bytes[5]}); // 0
