@@ -2,14 +2,13 @@ const std = @import("std");
 const print = std.debug.print;
 
 pub fn main() void {
-    const immutable = 110;
-    // immutable += 1; // compile error
+    var x: i8 = undefined;
+    var y: i8 = undefined;
+    var z: i8 = undefined;
 
-    print("const: {d}\n", .{immutable});
+    const tuple = .{ 1, 2, 3 };
 
-    var variable: i8 = 50; // must be always mutated or error
-    print("{d}\n", .{variable});
+    x, y, z = tuple;
 
-    variable += 1;
-    print("{d}\n", .{variable});
+    print("tuple: x:{} y:{} z:{}", .{ x, y, z });
 }
