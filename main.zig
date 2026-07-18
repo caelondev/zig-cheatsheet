@@ -1,13 +1,17 @@
-//! Volatile - Loads and stores are assumed
-//! to not have side effects.
-//! If a given load or store should
-//! have side effects, such as
-//! Memory Mapped Input/Output (MMIO), use volatile
+//! Alignment - Each type has an alignment
+//! - a number of bytes such that,
+//! when a value of the type is loaded from
+//! or stored to memory, the memory address
+//! must be evenly divisible by this number.
 
 const std = @import("std");
 const print = std.debug.print;
 
 pub fn main() void {
-    const mmio_ptr: *volatile u8 = @ptrFromInt(0x12345678);
-    _ = mmio_ptr;
+    const x: i32 = 1234;
+    const does_align = @intFromPtr(&x) % @alignOf(i32) == 0;
+
+    if (does_align) {
+        print("it does align!\n", .{});
+    }
 }
